@@ -3,7 +3,7 @@ CREATE DATABASE lab1;
 
 -- 2. Create table «users» with following fields
 CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     firstname VARCHAR(50),
     lastname VARCHAR(50)
 );
@@ -13,6 +13,8 @@ ALTER TABLE users ADD COLUMN isadmin INTEGER;
 ALTER TABLE users ALTER COLUMN isadmin TYPE BOOLEAN USING isadmin::boolean;
 --5. Change value as false
 ALTER TABLE users ALTER COLUMN isadmin SET DEFAULT FALSE;
+--6 add primary key constraint
+ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY (id);
 --7. Create table tasks
 CREATE TABLE tasks(
     id SERIAL PRIMARY KEY,
