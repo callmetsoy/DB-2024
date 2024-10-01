@@ -76,10 +76,9 @@ SELECT name FROM departments
 ORDER BY budget DESC
 LIMIT 1 OFFSET 1;
 
-SELECT e.name, e.lastname
-FROM employees e
-JOIN departments d ON e.department = d.code
-WHERE d.budget = (SELECT MIN(budget) FROM departments);
+SELECT name, lastname FROM employees
+WHERE department IN (SELECT code FROM departments
+WHERE budget = (SELECT MIN(budget) FROM departments));
 
 
 SELECT name, lastname FROM employees WHERE city = 'Almaty'
